@@ -4,8 +4,15 @@ import {FaBarsStaggered} from 'react-icons/fa6';
 import { NavLink } from 'react-router-dom';
 import logo from '../assets/logo.svg'
 import NavLinks from './NavLinks';
+import { useState } from 'react';
+
+
+const themes = {
+    cupcake:'cupcake',
+}
 
 const Navbar = () => {
+   
   return (
     <nav className='bg-base-200'>
         <div className="navbar align-element">
@@ -27,7 +34,7 @@ const Navbar = () => {
                 <ul className='menu menu-horizontal'><NavLinks/></ul>
             </div>
             <div className="navbar-end">
-                {/* THEME SETUP */}
+           
                 {/* CART LINK */}
                 <NavLink to='/cart' className='btn btn-ghost btn-circle btn-md ml-4'>
                     <div className="indicator">
