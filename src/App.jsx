@@ -3,12 +3,18 @@ import { RouterProvider,createBrowserRouter } from "react-router-dom";
 import { About,Cart,Checkout,Error,HomeLayout,Landing,Login,Orders,Products,Register,SingleProduct } from "./pages";
 import { ErrorElement } from "./components";
 
+//loaders
+import {loader as landingLoader} from './pages/Landing';
+
+//actions
+
 
 const router = createBrowserRouter([
  {
   path:'/',
   element:<HomeLayout/>,
   errorElement:<Error/>,
+  loader:landingLoader,
   children:[{
     index:true,
     element:<Landing/>,
