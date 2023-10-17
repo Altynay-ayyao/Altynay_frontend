@@ -25,7 +25,16 @@ const Navbar = () => {
             <div className="navbar-center hidden lg:flex">
                 <ul className='menu menu-horizontal'>nav links</ul>
             </div>
-            <div className="navbar-end"></div>
+            <div className="navbar-end">
+                {/* THEME SETUP */}
+                {/* CART LINK */}
+                <NavLink to='/cart' className='btn btn-ghost btn-circle btn-md ml-4'>
+                    <div className="indicator">
+                        <BsCart3 className='h-6 w-6'/>
+                        <span className="badge badge-sm badge-primary indicator-item">8</span>
+                    </div>
+                </NavLink>
+            </div>
         </div>
     </nav>
   )
