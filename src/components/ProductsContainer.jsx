@@ -7,9 +7,6 @@ import { productionUrl } from '../utils'
 
 
 const ProductsContainer = () => {
-
-
-
     return (
         <>
         <ProductsGrid />
