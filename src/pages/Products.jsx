@@ -1,5 +1,5 @@
 import React from 'react'
-import { Filters, ProductsContainer,PaginationContainer} from '../components';
+import { Filters, ProductsContainer} from '../components';
 import { customFetch } from '../utils';
 
 const url = '/products'
@@ -18,7 +18,7 @@ const Products = () => {
   <>
   <Filters/>
   <ProductsContainer/>
-  <PaginationContainer/>
+ 
   </>
   )
 }
