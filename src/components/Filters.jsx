@@ -1,8 +1,15 @@
 import React from 'react'
 import FormInput from './FormInput'
 import {Form,Link} from 'react-router-dom'
+import FormSelect from './FormSelect'
+
+
+
 
 const Filters = () => {
+
+
+
   return (
     <Form 
     className='bg-base-200 
@@ -12,6 +19,11 @@ const Filters = () => {
     lg:grid-cols-4 items-center' >
       {/* SEARCH */}
       <FormInput type='search' label='search product' name='search' size='input-sm'></FormInput>
+      {/* CATEGORIES */}
+   
+
+      {/* ORDER */}
+      
       {/* BUTTONS */}
       <button type='submit' className='btn btn-neutral btn-sm'>search</button>
       <Link to="/products" className='btn btn-accent btn-sm'>

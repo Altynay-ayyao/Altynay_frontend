@@ -1,6 +1,10 @@
 import axios from 'axios';
 
-export const productionUrl = 'https://api.escuelajs.co/api/v1'
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+
+ export const productionUrl = 'https://api.escuelajs.co/api/v1'
 
 export const customFetch = axios.create({
     baseURL:productionUrl,
@@ -14,3 +18,5 @@ export const generateAmountOptions = (number) =>{
         return <option key={amount} value={amount}>{amount}</option>
     })
 }
+
+
