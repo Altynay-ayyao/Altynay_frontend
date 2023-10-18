@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { productionUrl,formatPrice } from '../utils';
+import { productionUrl } from '../utils';
 
 import React from 'react'
-
 
 const ProductsGrid = () => {
 

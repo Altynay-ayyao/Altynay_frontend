@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom'; 
-import { productionUrl } from '../utils';
+import { productionUrl,generateAmountOptions } from '../utils';
 
 const SingleProduct = () => {
   const [product, setProduct] = useState(null); 
@@ -37,17 +37,17 @@ const SingleProduct = () => {
   if (!product) return <p>No product found</p>;
 
 
- const handleAmount = ()=>{
+ const handleAmount = (e)=>{
   setAmount(parseInt(e.target.value));
  }
 
   const { images, title, price, description } = product;
 
   return (
-    <section>
-      <div className="text-md breadcrumbs">
-        <ul>
-          <li>
+    <section >
+      <div className="text-md breadcrumbs ">
+        <ul >
+          <li >
             <Link to='/'>Home</Link>
             <span> / </span>
             <Link to='/products'>Products</Link>
@@ -70,19 +70,21 @@ const SingleProduct = () => {
                 amount
               </h4>
             </label>
-            <select className='select seclect-secondary select-bordered select-md' id="amount" value={amount} onChange={handleAmount}>
-              <option value={1}>1</option>
-              <option value={2}>2</option>
-              <option value={3}>3</option>
+            <select className='select seclect-secondary select-bordered select-md' 
+            id="amount" 
+            type="number" 
+            value={amount} 
+            onChange={handleAmount}>
+             {generateAmountOptions(10)}
             </select>
           </div>
         
           <div className="mt-10">
-            <button className='btn btn-secondary btn-md' onClick={()=>console.log('add to')} >Add to bag</button>
+            <button className='btn btn-primary btn-md' onClick={()=>console.log('add to')} >Add to bag</button>
           </div>
         </div>
 
-
+      
       </div>
     </section>
   );
