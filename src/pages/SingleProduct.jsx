@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom'; // to access the dynamic params from the URL
-import { customFetch } from '../utils';
+import { productionUrl } from '../utils';
 
 const SingleProduct = () => {
   const [product, setProduct] = useState(null); // state to keep the fetched product data
@@ -12,50 +12,60 @@ const SingleProduct = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        // Adjusting the request URL to properly use the ID
+        let response = await fetch(`${productionUrl}/products/${id}`);
+        if (!response.ok) {
+          throw new Error(`An error occurred: ${response.statusText}`);
+        }
 
-        let response = await fetch(`https://api.escuelajs.co/api/v1/products?${id}`)
         let data = await response.json();
-       
+        setProduct(data); // Directly setting the state with the fetched data
 
       } catch (error) {
         console.error("An error occurred while fetching the data: ", error);
+        setError(error.message); // Saving any error messages
       } finally {
-        setLoading(false);
+        setLoading(false); // Indicating that loading has finished
       }
-
     };
 
-    
-    setProduct(fetchData())
-   
-  }, [id])
+    fetchData(); // Directly calling the async function without trying to assign its return value
+  }, [id]);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
+  if (!product) return <p>No product found</p>;
 
 
-  if (loading) {
-    return <p>Loading...</p>; // or any loading spinner
-  }
 
-  if (error) {
-    return <p>Error loading product: {error}</p>;
-  }
 
-  if (!product) {
-    return <p>No product found.</p>;
-  }
-
-  const {images,title,price,description} = product;
+  const { images, title, price, description } = product;
 
   return (
-  <section>
-    <div className="text-md breadcrumbs">
-      <ul>
-        <li>
-          <Link to='/'>Home</Link>
-          <Link to='/products'>Pruducts</Link>
-        </li>
-      </ul>
-    </div>
-  </section>
+    <section>
+      <div className="text-md breadcrumbs">
+        <ul>
+          <li>
+            <Link to='/'>Home</Link>
+            <span> / </span>
+            <Link to='/products'>Products</Link>
+            <span> / {title}</span> {/* Showing product title */}
+          </li>
+        </ul>
+      </div>
+      <div className='mt-6 grid gap-y-8 lg:grid-col-2 lg:gap-x-16'>
+        {/*product data here */}
+        <img src={images} alt={title} className='w-96 h-96 object-cover'/>
+        {/* PRODUCT */}
+        <div>
+          <h1 className='capitalize text-3xl font-bold'>{title}</h1>
+          <p className='mt-3 text-2xl font-bold'>{price}€</p>
+          <p className='mt-6 leading-8'>{description}</p>
+        </div>
+     
+       
+      </div>
+    </section>
   );
 };
 
