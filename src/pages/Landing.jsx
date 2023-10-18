@@ -2,13 +2,12 @@ import React from 'react';
 import { FeaturedProducts, Hero } from '../components';
 import { customFetch } from '../utils';
 
-const url = '?featured=true'
-export const loader = async ()=>{
+const url = '/products?featured=true'
+export const customUseLoader = async ()=>{
   const response = await customFetch(url);
   const products = response.data;
 
-  return {products}
- 
+  return products;
 }
 
 

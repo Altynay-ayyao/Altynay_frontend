@@ -4,7 +4,8 @@ import { About,Cart,Checkout,Error,HomeLayout,Landing,Login,Orders,Products,Regi
 import { ErrorElement } from "./components";
 
 //loaders
-import {loader as landingLoader} from './pages/Landing';
+import { customUseLoader as landingLoader} from './pages/Landing';
+//import {loader as singleProductLoader} from './pages/SingleProduct';
 
 //actions
 
@@ -26,7 +27,9 @@ const router = createBrowserRouter([
   },
   {
     path:'products/:id',
-    element:<SingleProduct/>
+    element:<SingleProduct/>,
+    errorElement:<Error/>,
+   // loader:singleProductLoader,
   },
   {
     path:'cart',
