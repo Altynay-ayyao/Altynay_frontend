@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom'; 
 import { productionUrl,generateAmountOptions } from '../utils';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../features/cart/cartSlice';
 
 const SingleProduct = () => {
   const [product, setProduct] = useState(null); 
@@ -8,6 +10,8 @@ const SingleProduct = () => {
   const [error, setError] = useState(null); 
   const [amount,setAmount] = useState(1);
   const { id } = useParams(); 
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,8 +45,24 @@ const SingleProduct = () => {
   setAmount(parseInt(e.target.value));
  }
 
-  const { images, title, price, description } = product;
 
+
+
+  const { images, title, price, description } = product;
+  
+  const cartProduct = {
+  productID:product.id,
+  images,
+  title,
+  price,
+  }
+ console.log(product.id)
+
+
+
+ const addToCart = ()=>{
+  dispatch(addItem({product:cartProduct}))
+ }
   return (
     <section >
       <div className="text-md breadcrumbs ">
@@ -80,7 +100,7 @@ const SingleProduct = () => {
           </div>
         
           <div className="mt-10">
-            <button className='btn btn-primary btn-md' onClick={()=>console.log('add to')} >Add to bag</button>
+            <button className='btn btn-primary btn-md' onClick={addToCart} >Add to bag</button>
           </div>
         </div>
 
