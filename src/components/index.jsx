@@ -14,4 +14,6 @@ export {default as CategoryContainer} from './CategoryContainer';
 export {default as ProductsContainer} from './ProductsContainer';
 export {default as Filters} from './Filters';
 export {default as ProductsList} from './ProductsList'
+export {default as CartTotals} from './CartTotals'
+export {default as CartItemsList} from './CartItemsList'
 
