@@ -46,23 +46,24 @@ const SingleProduct = () => {
  }
 
 
-
-
-  const { images, title, price, description } = product;
+ const { images, title, price, description } = product;
   
-  const cartProduct = {
-  productID:product.id,
+const cartProduct = {
+  cartID:product.id,
   images,
   title,
   price,
-  }
- console.log(product.id)
+  amount,
+  } 
+
 
 
 
  const addToCart = ()=>{
   dispatch(addItem({product:cartProduct}))
  }
+
+
   return (
     <section >
       <div className="text-md breadcrumbs ">
