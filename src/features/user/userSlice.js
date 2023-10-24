@@ -8,12 +8,17 @@ const initialState = {
 const userSlice = createSlice({
   name:'user',
   initialState,
-  loginUser:(state,action)=>{
-    console.log('login')
-  },
-  logoutUser:(staten)=>{
-    console.log('logout')
-  },
+  reducers:{
+    loginUser:(state,action)=>{
+      console.log('login')
+    },
+    logoutUser:(state)=>{
+      state.user =null;
+      localStorage.removeItem('user')
+      toast.success('Logged out successfully');
+    },
+  }
+ 
 })
 
 export const {loginUser,logoutUser}=userSlice.actions;
