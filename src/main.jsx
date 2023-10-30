@@ -7,6 +7,9 @@ import { ToastContainer } from 'react-toastify'
 import { store } from './store.js';
 import { Provider } from 'react-redux'
 
+//File where integrating the Redux store with the app
+//store is a state container
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
     <App />

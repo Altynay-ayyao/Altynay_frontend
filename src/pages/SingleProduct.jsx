@@ -16,24 +16,24 @@ const SingleProduct = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Adjusting the request URL to properly use the ID
+
         let response = await fetch(`${productionUrl}/products/${id}`);
         if (!response.ok) {
           throw new Error(`An error occurred: ${response.statusText}`);
         }
 
         let data = await response.json();
-        setProduct(data); // Directly setting the state with the fetched data
+        setProduct(data); 
 
       } catch (error) {
         console.error("An error occurred while fetching the data: ", error);
-        setError(error.message); // Saving any error messages
+        setError(error.message); 
       } finally {
-        setLoading(false); // Indicating that loading has finished
+        setLoading(false); 
       }
     };
 
-    fetchData(); // Directly calling the async function without trying to assign its return value
+    fetchData(); 
   }, [id]);
 
   if (loading) return <p>Loading...</p>;

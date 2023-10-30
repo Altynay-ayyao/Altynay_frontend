@@ -1,6 +1,20 @@
 import React from 'react'
 import { FormInput,SubmitBtn } from '../components'
-import {Form,Link} from 'react-router-dom'
+import {Form,Link, json, redirect} from 'react-router-dom'
+import { customFetch, productionUrl } from '../utils'
+import { toast } from 'react-toastify'
+
+export const action = async (request)=>{
+  const formData = await request.formData()
+  const data = Object.fromEntries(formData)
+
+  try {
+     const response = await productionUrl.post('/users/')
+  } catch (error){
+
+  }
+  return null;
+}
 
 const Register = () => {
   return (
@@ -11,9 +25,9 @@ const Register = () => {
       <h4 className='text-center text-3xl font-bold'>
         Register
       </h4>
-      <FormInput type='text' label='username' name='username'/>
-      <FormInput type='email' label='email' name='email'/>
-      <FormInput type='password' label='password' name='password'/>
+      <FormInput type='text' label='username' name='username' defaultValue="Nicolas"/>
+      <FormInput type='email' label='email' name='email' defaultValue="nico@gmail.com"/>
+      <FormInput type='password' label='password' name='password' defaultValue="1234"/>
       <div className="mt-4">
         <SubmitBtn text='register'/>
       </div>
@@ -30,3 +44,36 @@ const Register = () => {
 }
 
 export default Register
+
+/*
+const url = 'https://api.escuelajs.co/api/v1/users/';
+
+    const userData = {
+        name: "Nicolas",
+        email: "nico@gmail.com",
+        password: "1234",
+        avatar: "https://api.lorem.space/image/face?w=640&h=480&r=867",
+    };
+
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userData)
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const jsonResponse = await response.json();
+        console.log('User created:', jsonResponse);
+        toast.success(`You have successfully registered,${jsonResponse.name}`)
+        return jsonResponse;
+    } catch (error) {
+        console.error('Error creating user:', error);
+        toast.error('please double check your credentials')
+    }
+*/

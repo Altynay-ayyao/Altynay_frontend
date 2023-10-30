@@ -16,7 +16,7 @@ const ProductsGrid = () => {
             try {
                 let response = await fetch(`${productionUrl}/products?featured=true`);
                 let data = await response.json();
-                console.log(data)
+              
                 setProducts(data); 
             } catch (error) {
                 console.error("An error occurred while fetching the data: ", error);

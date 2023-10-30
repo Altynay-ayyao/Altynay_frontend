@@ -8,8 +8,8 @@ const url = '/products'
 export const loader = async({request})=>{
   const response = await customFetch(url);
   const products = response.data;
-  const meta = response.data
-  console.log(response)
+  
+
   return null;
 }
 

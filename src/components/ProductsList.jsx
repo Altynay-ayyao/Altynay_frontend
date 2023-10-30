@@ -4,6 +4,8 @@ import { productionUrl } from '../utils';
 
 import React from 'react'
 
+//A component to display products
+
 const ProductsList = () => {
 
     const [products, setProducts] = useState([]);
@@ -16,7 +18,7 @@ const ProductsList = () => {
             try {
                 let response = await fetch(`${productionUrl}/products?featured=true`);
                 let data = await response.json();
-                console.log(data)
+             
                 setProducts(data); 
             } catch (error) {
                 console.error("An error occurred while fetching the data: ", error);
@@ -55,3 +57,5 @@ const ProductsList = () => {
 };
 
 export default ProductsList;
+
+

@@ -1,6 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 
+//this file contains the slice for cart operations
+
 const defaultState = {
   cartItems: [],
   numItemsInCart:0,
@@ -21,7 +23,7 @@ const cartSlice = createSlice({
     addItem:(state,action)=>{
      
       const {product} = action.payload;
-      console.log(product);
+     
       const item = state.cartItems.find((i)=>i.cartID === product.cartID);
       if(item){
         item.amount += product.amount

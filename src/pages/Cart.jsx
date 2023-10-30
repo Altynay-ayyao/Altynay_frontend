@@ -3,6 +3,8 @@ import {useSelector } from 'react-redux'
 import {CartItemsList, SectionTitle,CartTotals} from '../components'
 import { Link } from 'react-router-dom'
 
+//a component to manage and display the cart
+
 const Cart = () => {
 
 

@@ -3,12 +3,15 @@ import { RouterProvider,createBrowserRouter } from "react-router-dom";
 import { About,Cart,Checkout,Error,HomeLayout,Landing,Login,Orders,Products,Register,SingleProduct } from "./pages";
 import { ErrorElement } from "./components";
 
+//main components where everything connects
+
 //loaders
 import { customUseLoader as landingLoader} from './pages/Landing';
 //import {loader as singleProductLoader} from './pages/SingleProduct';
 import {loader as productsLoader} from './pages/Products'
 
 //actions
+import {action as registerAction} from './pages/Register'
 
 
 const router = createBrowserRouter([
@@ -61,6 +64,7 @@ const router = createBrowserRouter([
   path:'/register',
   element:<Register/>,
   errorElement:<Error/>,
+  action:registerAction,
  }
 ])
 
