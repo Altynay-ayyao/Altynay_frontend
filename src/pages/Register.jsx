@@ -4,17 +4,6 @@ import {Form,Link, json, redirect} from 'react-router-dom'
 import { customFetch, productionUrl } from '../utils'
 import { toast } from 'react-toastify'
 
-export const action = async (request)=>{
-  const formData = await request.formData()
-  const data = Object.fromEntries(formData)
-
-  try {
-     const response = await productionUrl.post('/users/')
-  } catch (error){
-
-  }
-  return null;
-}
 
 const Register = () => {
   return (
